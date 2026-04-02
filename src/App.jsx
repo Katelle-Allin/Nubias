@@ -4,6 +4,7 @@ import { AuthProvider, useAuth } from './context/AuthContext'
 import { HistoryProvider } from './context/HistoryContext'
 
 import Navbar from './components/Navbar'
+import ScrollToHash from './components/ScrollToHash'
 import HomePage from './pages/HomePage'
 import SignupPage from './pages/SignupPage'
 import LoginPage from './pages/LoginPage'
@@ -35,6 +36,7 @@ function RedirectIfAuth({ children }) {
 function AppRoutes() {
   return (
     <>
+      <ScrollToHash />
       <Navbar />
       <Routes>
         {/* Public */}

@@ -38,9 +38,9 @@ export default function Navbar() {
           </Link>
 
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
-            <a href="#problem" className="hover:text-brand-700 transition-colors">The Problem</a>
-            <a href="#solution" className="hover:text-brand-700 transition-colors">Solution</a>
-            <a href="#ai-disclosure" className="hover:text-brand-700 transition-colors">AI & Ethics</a>
+            <Link to="/#problem" className="hover:text-brand-700 transition-colors">The Problem</Link>
+            <Link to="/#solution" className="hover:text-brand-700 transition-colors">Solution</Link>
+            <Link to="/#ai-disclosure" className="hover:text-brand-700 transition-colors">AI & Ethics</Link>
           </div>
 
           <div className="flex items-center gap-3">
