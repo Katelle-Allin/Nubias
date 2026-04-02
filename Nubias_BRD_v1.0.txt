@@ -1,0 +1,154 @@
+
+NUBIAS
+Gender-Neutral Hiring Platform
+Business Requirements Document
+Version 1.0  |  Academic Project  |  2026
+Document statusDraft — v1.0Prepared byProduct & Strategy TeamTarget marketsUK + North AmericaLanguageEnglishAcademic contextStartup simulation — class project
+1. Executive Summary
+Nubias is a B2B SaaS platform that removes gendered language from the three critical documents in a hiring pipeline: job offers, candidate applications (CVs and cover letters), and recommendation letters. It is grounded in the academic research of Caroline Criado-Perez and peer-reviewed studies on linguistic gender bias in recruitment (Gaucher, Friesen & Kay, 2011).
+
+The core problem Nubias solves is well-documented: masculine-coded language in job postings reduces female applicants; communal language in women's CVs is evaluated more negatively than identical agentic language in men's CVs; and recommendation letters for women are systematically shorter, more doubt-laden, and trait-focused rather than achievement-focused. These biases are largely invisible to the humans producing the documents.
+
+Nubias makes these biases visible and corrects them automatically — using a small language model (?1 billion parameters) from Hugging Face, purpose-selected and fine-tuned to be both effective and environmentally responsible. All AI-generated suggestions are presented as drafts requiring human review, in compliance with EU AI Act transparency obligations and responsible AI principles.
+
+The platform is sold on a per-company flat-fee subscription to HR managers and hiring managers in English-speaking markets (UK and North America). It operates as a standalone web application with no external integrations required at launch.
+
+2. Business Context & Problem Statement
+2.1 The Problem
+Gender bias in hiring is structural, not merely attitudinal. It is embedded in the language used at every stage of the recruitment process:
+
+• Job offers written with masculine-coded vocabulary (competitive, dominant, aggressive, ninja, rockstar) statistically reduce the number of women who apply, without affecting male applicant rates (Gaucher et al., 2011).
+• CV and cover letter language follows documented gendered patterns: women use more communal language (helped, supported, assisted) which is perceived as less competent than the agentic language more commonly used by men (led, delivered, drove).
+• Recommendation letters for women are on average shorter, contain more doubt raisers (although she..., she sometimes...), focus on interpersonal traits rather than achievements, and use fewer superlatives — leading to worse hiring outcomes even for equally qualified candidates (Trix & Psenka, 2003).
+
+These patterns are largely unconscious and self-reinforcing. Without a dedicated tool, HR teams have no scalable way to detect or correct them.
+2.2 The Opportunity
+The market for DEI (Diversity, Equity & Inclusion) HR tools is growing rapidly, driven by corporate ESG commitments, shareholder pressure, and emerging regulation. Nubias enters this market with a focused, evidence-based value proposition: not a general DEI dashboard, but a precise language neutralisation tool with a clear mechanism of action.
+
+The primary target buyers are HR managers and hiring managers at companies with active recruitment pipelines, in English-speaking markets where DEI accountability is highest (UK and North America).
+2.3 Research Foundation
+SourceContribution to NubiasCriado-Perez, C. — Invisible Women (2019)Foundational framework: how gender-blind systems disadvantage women; systemic lens applied throughout the product.Gaucher, Friesen & Kay (2011)Empirical basis for masculine-coded word list used in job offer analysis.Trix & Psenka (2003)Empirical basis for recommendation letter bias detection (doubt raisers, trait vs. achievement focus).Extended lexicon (Team — in progress)Additional gendered and neutral word pairs being compiled by a dedicated team member to expand the detection vocabulary beyond published lists.
+3. Objectives & Success Criteria
+3.1 Business Objectives
+• Acquire paying company subscribers in UK and North American markets within 12 months of launch.
+• Demonstrate a measurable increase in gender-diverse candidate shortlists for client companies.
+• Establish Nubias as a credible, research-backed voice in the DEI HR technology space.
+3.2 Success Metrics (12 months post-launch)
+MetricTargetPaying company accountsTo be defined by commercial team (TBD)Gender diversity of shortlists (client-reported)Measurable improvement vs. pre-Nubias baselineDocument processing volumeTracked per account for product analyticsUser retention (monthly active companies)?70% of accounts active at month 6
+4. Scope
+4.1 In Scope — Version 1
+• Public marketing homepage (pre-login) explaining the problem, the research basis, AI usage transparency, and the product value proposition.
+• Company account creation and authentication (one login per company, email + password).
+• Job Offer module: in-platform rich text editor with real-time gender-bias feedback and inline neutralisation suggestions.
+• Applications module: batch upload of candidate CVs and cover letters (PDF and .docx), anonymisation of filenames, AI-powered neutralisation, ZIP download with anonymised files + identity mapping Excel.
+• Document history: companies can retrieve previously processed documents from their account.
+• AI transparency notices throughout the platform (see Section 6.4).
+• Web application, responsive design — optimised for desktop, usable on mobile.
+4.2 Out of Scope — Version 1
+The following are explicitly deferred to future versions and must not be scoped, designed, or budgeted in v1.
+• Recommendation letter module (identified as v2 feature).
+• ATS / HRIS integrations (Greenhouse, Workday, Lever, etc.).
+• Multi-user accounts with roles (admin / recruiter) — single shared login in v1.
+• French language support or any non-English language processing.
+• Candidate-facing features (no access for applicants).
+• Bias analytics dashboard or aggregate reporting.
+• CV scoring, ranking, or any automated candidate selection.
+• Mobile native apps (iOS / Android).
+
+5. Stakeholder Map
+StakeholderRoleInterest / ResponsibilityProduct & Strategy TeamInternalOverall product vision, BRD ownership, feature prioritisation.Lexicon Research Team MemberInternalSourcing and validating extended gendered/neutral word pairs beyond published research. Delivers lexicon as input to the system.ML / Model Team MemberInternalSelection and fine-tuning of the Hugging Face SLM (?1B parameters). Responsible for model performance, environmental footprint, and integration spec.HR Managers / RecruitersEnd userPrimary users of the Job Offer and Applications modules. Use platform to neutralise documents and manage company account.Hiring ManagersEnd userUse the Job Offer editor to draft and refine inclusive job postings.Company (B2B subscriber)CustomerPays flat-fee subscription. Concerned with compliance, DEI outcomes, and ease of adoption.
+6. Functional Requirements
+6.1 Public Homepage
+The homepage must be accessible without authentication and serve as the primary marketing and trust-building surface.
+
+• Clearly explain the problem of gender bias in hiring, supported by references to Criado-Perez and peer-reviewed research.
+• Describe the three document types addressed by the platform (job offers, CVs/cover letters, recommendation letters — the latter as a roadmap item).
+• Contain a prominent, plain-language AI disclosure section explaining: (a) that the platform uses artificial intelligence, (b) that AI outputs are suggestions and not decisions, (c) that all outputs must be reviewed by a human before use, and (d) the environmental commitment (SLM, ?1B parameters).
+• Include a clear call to action: account creation / trial signup.
+• Be fully responsive and accessible (WCAG 2.1 AA minimum).
+6.2 Authentication & Company Accounts
+• Companies register with a company name, email address, and password.
+• One shared login per company account in v1 (no individual user management).
+• Secure password reset by email.
+• Session management with automatic timeout after inactivity.
+6.3 Job Offer Module
+This module provides an in-platform editor for writing and neutralising job offers in real time.
+
+• Rich text editor in which the user writes or pastes a job offer directly.
+• Real-time analysis: as the user types, flagged gendered words are highlighted inline with colour coding (masculine-coded vs. feminine-coded).
+• For each flagged term, a tooltip or side panel displays: the flagged word, the reason it is flagged (with a plain-language explanation grounded in the research), and one or more suggested neutral alternatives.
+• The user can accept a suggestion (replaces the word in the editor), dismiss it, or type their own replacement.
+• A live gender-neutrality score or indicator updates as changes are made, giving the user confidence the document is improving.
+• Final document can be copied to clipboard or downloaded as a .docx file.
+• Processed job offers are saved to the company's document history.
+6.4 Applications Module
+This module processes batches of candidate CVs and cover letters for blind, anonymised review.
+
+• The user uploads one or multiple files in a single action. Accepted formats: PDF and .docx.
+• The system processes each document individually through the SLM to neutralise gendered language.
+• Filenames are anonymised: original filenames (which may reveal gender or ethnicity) are replaced with sequential identifiers (e.g. application_001.docx).
+• A mapping file (Excel .xlsx) is generated listing each anonymised identifier alongside the original filename, to allow re-identification after selection decisions are made.
+• Output is delivered as a ZIP archive containing: all neutralised documents under anonymised filenames, and the mapping Excel file.
+• No bias explanations or annotations are included in the output documents, to preserve the integrity of blind review.
+• Processed batches are saved to the company's document history with date, number of files, and download link.
+6.5 AI Transparency Requirements
+These requirements are mandatory and non-negotiable. They stem from EU AI Act obligations, GDPR accountability principles, and Nubias's own responsible AI commitment. They apply to every surface of the platform where AI-generated content appears.
+• Every page or view displaying AI-generated content must carry a visible, plain-language notice stating that the content was produced by an AI model and has not been verified for accuracy.
+• The notice must explicitly state that AI output must be reviewed and validated by a human before use in any hiring decision.
+• The platform must never present AI-neutralised text as a final or authoritative version without a human review prompt.
+• The homepage must include a dedicated section on AI usage, model limitations, and the human-in-the-loop requirement (see 6.1).
+• The platform must disclose that it uses a third-party AI model (Hugging Face) and link to the relevant model card where technically feasible.
+6.6 Document History
+• Each company account has access to a history of all previously processed documents.
+• History entries show: document type (job offer / applications batch), date processed, and a download link.
+• Retention policy for stored documents to be defined in the data processing agreement (see Section 8).
+
+7. Non-Functional Requirements
+CategoryRequirementPerformanceSingle document (CV / job offer) processed and returned in ?15 seconds under normal load. Real-time job offer feedback latency ?500ms per analysis cycle.ScalabilityPlatform must support concurrent batch uploads from multiple company accounts without degradation. Architecture must allow horizontal scaling of the inference layer.AvailabilityTarget 99.5% uptime (excluding scheduled maintenance). Maintenance windows communicated in advance.SecurityHTTPS enforced throughout. Passwords hashed with bcrypt or equivalent. Company data strictly isolated (no cross-account data access). Regular dependency vulnerability scanning.AccessibilityWCAG 2.1 Level AA compliance on all public and authenticated pages.Browser supportLatest two versions of Chrome, Firefox, Safari, and Edge. Desktop-first; mobile usable.EnvironmentalAI inference must use a model with ?1 billion parameters, sourced from Hugging Face. Model selection must document its carbon footprint estimate. Inference calls must be batched where possible to minimise redundant compute.Model constraintThe SLM must be selected and fine-tuned by the ML team member. The BRD does not prescribe a specific model identifier; it constrains the parameter ceiling (?1B) and the source (Hugging Face). Candidate models include distilbert-base, MobileBERT, and FLAN-T5-small.
+8. Regulatory & Compliance Requirements
+8.1 GDPR (EU) / UK GDPR
+• Candidate CVs and cover letters constitute personal data under GDPR. Processing requires a lawful basis — the subscribing company (data controller) must obtain appropriate consent or rely on legitimate interest, documented in a Data Processing Agreement (DPA) between Nubias and each client company.
+• Nubias acts as data processor. A DPA template must be prepared prior to commercial launch.
+• Data minimisation: only the document content necessary for neutralisation is processed. No additional personal data is extracted or stored beyond what is required.
+• Right to erasure: companies must be able to delete their document history and associated data on request.
+• The decision on document storage (currently TBD) must be resolved before launch and documented in a Privacy Policy and DPA. The privacy-by-default recommendation is: process in real time, store only anonymised outputs, never store original documents longer than the session.
+• A Privacy Policy and Terms of Service must be published on the platform prior to any data collection.
+8.2 EU AI Act
+The EU AI Act classifies AI systems used in employment and recruitment as high-risk (Annex III, point 4). This classification has direct implications for Nubias:
+
+• Nubias must implement a human-in-the-loop mechanism: AI outputs are suggestions, never autonomous decisions. This is already reflected in the functional requirements (Section 6.5).
+• A conformity assessment process will be required before operating in the EU market. This must be planned as a pre-launch workstream.
+• Technical documentation of the AI system (model card, intended use, known limitations, performance metrics) must be maintained and made available to authorities on request.
+• Users must be informed they are interacting with an AI system — covered by the transparency requirements in Section 6.5.
+• Note: As an academic project, full EU AI Act conformity is out of scope for this version, but the architecture and UX must be designed to be compliant, and a compliance roadmap must be documented.
+8.3 Equal Employment Law
+• Nubias does not make hiring decisions. It neutralises language in documents. This design choice is deliberate and must be preserved: the platform assists human decision-makers, it does not replace them.
+• Legal counsel should review the platform's claims and disclaimers to ensure they do not inadvertently create liability (e.g. implying guaranteed bias elimination).
+
+9. Constraints & Assumptions
+9.1 Constraints
+• Timeline: 3-day delivery (academic sprint). Full production implementation is out of scope; this BRD defines the complete v1 product for post-academic development.
+• AI model: must use a Hugging Face SLM with ?1 billion parameters. Model selection is delegated to the ML team member and is a dependency for the Applications and Job Offer modules.
+• Lexicon: the extended gendered/neutral word list is being compiled by a dedicated team member and is a dependency for the real-time job offer feedback feature. A baseline lexicon (Gaucher et al.) is available as a fallback.
+• Language: English only in v1. The system is not designed for French or other languages.
+• Integrations: none in v1. Standalone platform only.
+• Commercial model: flat-fee per-company subscription. Pricing not defined in this BRD.
+9.2 Assumptions
+• The Hugging Face Inference API will be used for model serving in the MVP phase, transitioning to self-hosted inference at scale if needed.
+• Companies uploading candidate documents have obtained the necessary consent from candidates to process their personal data.
+• The platform will be hosted on a cloud provider with EU/UK data residency options to support GDPR compliance.
+• The ML team member will deliver a fine-tuned model and integration specification ahead of the Applications module development.
+• The lexicon team member will deliver an initial extended word list ahead of the Job Offer real-time feedback feature development.
+
+10. Risks & Mitigations
+RiskSeverityMitigationSLM (?1B params) produces low-quality neutralisationsHighML team to benchmark multiple candidate models before selection. Define minimum quality threshold. Fallback to lexicon-only substitution for job offers if needed.GDPR non-compliance due to undefined document storage policyHighResolve storage decision (Section 6.6) before launch. Default to session-only processing. Engage legal counsel for DPA template.EU AI Act high-risk classification creates compliance burdenMediumDesign human-in-the-loop architecture from day one. Document technical specification. Plan conformity assessment as a pre-launch workstream.Lexicon gaps — biased terms not in word list pass through undetectedMediumCombine lexicon-based detection with SLM semantic analysis. Plan for continuous lexicon updates post-launch based on user feedback.Platform over-neutralises and removes legitimate professional languageMediumHuman review mandatory for all outputs (see Section 6.5). User can accept, reject, or edit every suggestion. No automatic replacement without user confirmation.Low adoption due to friction in upload / download workflowLowPrioritise UX simplicity. Conduct user testing with HR managers before launch. ATS integration planned for v2.
+11. Open Items & Decisions Required
+Open ItemOwnerRequired byDocument storage policy (session-only vs. persistent) — GDPR implicationsProduct + LegalBefore development startsFinal product name confirmation (Nubias is working title)Founding teamBefore brand / domain workSLM model selection and fine-tuning specificationML team memberBefore Applications module devExtended lexicon deliveryLexicon team memberBefore Job Offer real-time feedback devPricing and subscription tiersCommercial teamBefore commercial launchDPA template and Privacy Policy draftingLegal counselBefore any user data collectedEU AI Act conformity assessment roadmapProduct + LegalBefore EU market launch
+Appendix A — Glossary
+TermDefinitionMasculine-coded languageWords statistically associated with male gender roles that deter female applicants (e.g. competitive, dominant, aggressive).Communal languageWords emphasising social relationships and care (e.g. helped, supported, warm), more common in women's documents and evaluated less favourably in professional contexts.Doubt raiserA phrase in a recommendation letter that introduces uncertainty about a candidate's abilities (e.g. although she..., she sometimes...).SLMSmall Language Model — an AI language model with a constrained parameter count (here: ?1 billion), chosen for efficiency and reduced environmental impact.Human-in-the-loopA design principle requiring a human to review and approve AI-generated outputs before they are used in a consequential decision.B2B SaaSBusiness-to-Business Software as a Service — a cloud-based product sold to companies on a subscription basis.DPAData Processing Agreement — a contract between a data controller (client company) and data processor (Nubias) governing how personal data is handled.
+Appendix B — Key References
+• Criado-Perez, C. (2019). Invisible Women: Exposing Data Bias in a World Designed for Men. Chatto & Windus.
+• Gaucher, D., Friesen, J., & Kay, A. C. (2011). Evidence That Gendered Wording in Job Advertisements Exists and Sustains Gender Inequality. Journal of Personality and Social Psychology, 101(1), 109–128.
+• Trix, F., & Psenka, C. (2003). Exploring the Color of Glass: Letters of Recommendation for Female and Male Medical Faculty. Discourse & Society, 14(2), 191–220.
+
+— End of Document —
