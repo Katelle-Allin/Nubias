@@ -4,6 +4,7 @@ import { useHistory } from '../context/HistoryContext'
 import { downloadAsDocx, downloadAsPdf, downloadAsTxt } from '../utils/fileUtils'
 import AIDisclaimer from '../components/AIDisclaimer'
 import ResultCard from '../components/ResultCard'
+import SustainabilityPanel from '../components/SustainabilityPanel'
 import { FileText, Wand2, RotateCcw, Copy, Check, Info, ChevronDown, Download } from 'lucide-react'
 
 const EXAMPLE = `We are looking for a competitive, driven software engineer to join our high-performance team. The ideal candidate is an aggressive self-starter who thrives in a fast-paced, results-oriented environment. You will dominate complex technical challenges and be a rockstar contributor.
@@ -199,7 +200,7 @@ Include the full text — job title, requirements, responsibilities, and company
             <div className="flex items-start gap-2 text-xs text-slate-500 px-1">
               <Info size={13} className="shrink-0 mt-0.5 text-slate-400" />
               <p>
-                Powered by <strong>ano666-nubias.hf.space</strong> · SLM ≤1B parameters ·
+                Powered by <strong>madeofstone-nubiasv2.hf.space</strong> · SLM ≤1B parameters ·
                 Calls: <code className="text-brand-600">/bias_detection</code>
               </p>
             </div>
@@ -289,6 +290,12 @@ Include the full text — job title, requirements, responsibilities, and company
                     </p>
                   </div>
                 </div>
+
+                <SustainabilityPanel
+                  sustainability={result.sustainability}
+                  sessionTotals={result.sessionTotals}
+                  requestHistory={result.requestHistory}
+                />
               </div>
             )}
           </div>

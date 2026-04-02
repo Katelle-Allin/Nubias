@@ -3,6 +3,7 @@ import { anonymizeDocument } from '../api/nubias'
 import { useHistory } from '../context/HistoryContext'
 import { extractTextFromFile, downloadAsDocx, downloadAsPdf, downloadAsTxt } from '../utils/fileUtils'
 import AIDisclaimer from '../components/AIDisclaimer'
+import SustainabilityPanel from '../components/SustainabilityPanel'
 import { Users, Upload, Wand2, RotateCcw, FileText, X, Info, Download, FileCheck, ChevronDown } from 'lucide-react'
 
 const EXAMPLE = `Dear Hiring Manager,
@@ -148,6 +149,9 @@ export default function ApplicationsPage() {
           anonId: `application_${String(i + 1).padStart(3, '0')}`,
           surfaceAnonymized: data.surfaceAnonymized,
           fullyAnonymized: data.fullyAnonymized,
+          sustainability: data.sustainability,
+          requestHistory: data.requestHistory,
+          sessionTotals: data.sessionTotals,
         })
       }
       setResults(processed)
@@ -355,7 +359,7 @@ export default function ApplicationsPage() {
               <Info size={13} className="shrink-0 mt-0.5 text-slate-400" />
               <p>
                 Calls <code className="text-brand-600">/anonymize</code> on{' '}
-                <strong>ano666-nubias.hf.space</strong> ·
+                <strong>madeofstone-nubiasv2.hf.space</strong> ·
                 PDF and DOCX text is extracted locally in your browser before sending.
               </p>
             </div>
@@ -482,6 +486,14 @@ export default function ApplicationsPage() {
                       ⚠ AI suggestion — review before using in any blind shortlisting process.
                     </p>
                   </div>
+                )}
+
+                {active && (
+                  <SustainabilityPanel
+                    sustainability={active.sustainability}
+                    sessionTotals={active.sessionTotals}
+                    requestHistory={active.requestHistory}
+                  />
                 )}
               </div>
             )}
