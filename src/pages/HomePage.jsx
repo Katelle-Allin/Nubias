@@ -217,7 +217,7 @@ export default function HomePage() {
                 <AlertTriangle size={18} className="text-amber-500 shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-slate-900 mb-1">This platform uses artificial intelligence</p>
-                  <p>Nubias is powered by a Small Language Model (SLM) with ≤1 billion parameters, sourced from Hugging Face. This constraint was chosen deliberately for environmental responsibility and transparency.</p>
+                  <p>Nubias is powered by a Small Language Model (SLM) with ≤5 billion parameters, sourced from Hugging Face. This constraint was chosen deliberately for environmental responsibility and transparency.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">

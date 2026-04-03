@@ -22,7 +22,7 @@ export default function AIDisclaimer({ compact = false }) {
         <div>
           <h3 className="font-semibold text-amber-900 mb-1">AI Transparency Notice</h3>
           <ul className="space-y-1 text-sm text-amber-800">
-            <li>• This content was produced by an AI model (Hugging Face SLM, ≤1B parameters).</li>
+            <li>• This content was produced by an AI model (Hugging Face SLM, ≤5B parameters).</li>
             <li>• AI outputs are <strong>suggestions only</strong> — not decisions or authoritative versions.</li>
             <li>• All outputs <strong>must be reviewed and validated by a human</strong> before use in any hiring decision.</li>
             <li>• The model may make errors or miss context. Human judgement is required.</li>

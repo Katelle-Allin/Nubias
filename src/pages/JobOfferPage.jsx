@@ -200,7 +200,7 @@ Include the full text — job title, requirements, responsibilities, and company
             <div className="flex items-start gap-2 text-xs text-slate-500 px-1">
               <Info size={13} className="shrink-0 mt-0.5 text-slate-400" />
               <p>
-                Powered by <strong>madeofstone-nubiasv2.hf.space</strong> · SLM ≤1B parameters ·
+                Powered by <strong>madeofstone-nubiasv2.hf.space</strong> · SLM ≤5B parameters ·
                 Calls: <code className="text-brand-600">/bias_detection</code>
               </p>
             </div>

@@ -59,7 +59,7 @@ export default function Footer() {
         <div className="border-t border-slate-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600">
           <p>© 2026 Nubias. Academic simulation project. Not for commercial use.</p>
           <div className="flex items-center gap-4">
-            <span>AI model: Hugging Face SLM ≤1B params</span>
+            <span>AI model: Hugging Face SLM ≤5B params</span>
             <span>·</span>
             <span>EU AI Act compliant by design</span>
           </div>
