@@ -379,7 +379,7 @@ export default function ApplicationsPage() {
               <div className="card p-10 text-center min-h-[300px] flex flex-col items-center justify-center">
                 <div className="w-12 h-12 rounded-full border-4 border-brand-200 border-t-brand-600 animate-spin mx-auto mb-4" />
                 <p className="text-slate-600 text-sm font-semibold">{progress || 'Processing…'}</p>
-                <p className="text-slate-400 text-xs mt-1">Removing identifying information</p>
+                <p className="text-slate-400 text-xs mt-1">Removing identifying information — this can take up to a few minutes if the model is waking up</p>
               </div>
             )}
 

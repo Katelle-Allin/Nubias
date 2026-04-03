@@ -220,7 +220,7 @@ Include the full text — job title, requirements, responsibilities, and company
               <div className="card p-10 text-center h-full flex flex-col items-center justify-center min-h-[300px]">
                 <div className="w-12 h-12 rounded-full border-4 border-brand-200 border-t-brand-600 animate-spin mx-auto mb-4" />
                 <p className="text-slate-500 text-sm font-medium">{progress || 'Analysing…'}</p>
-                <p className="text-slate-400 text-xs mt-1">The AI is processing your job posting</p>
+                <p className="text-slate-400 text-xs mt-1">The AI is processing your job posting — this can take up to a few minutes if the model is waking up</p>
               </div>
             )}
 

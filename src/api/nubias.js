@@ -33,8 +33,8 @@ async function callGradio(apiName, inputData, onProgress) {
 
     const timeout = setTimeout(() => {
       es.close()
-      reject(new Error('API timeout — no response after 60s. The Hugging Face space may be sleeping; try again in a moment.'))
-    }, 60000)
+      reject(new Error('API timeout — no response after 15 minutes. The Hugging Face space may be unavailable.'))
+    }, 900000)
 
     es.addEventListener('complete', (event) => {
       clearTimeout(timeout)
