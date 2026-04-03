@@ -229,7 +229,7 @@ Include the full text — job title, requirements, responsibilities, and company
                 <p className="font-semibold text-rose-800 mb-1">Could not reach AI model</p>
                 <p className="text-sm text-rose-700">{error}</p>
                 <p className="text-xs text-rose-600 mt-2">
-                  Make sure the Hugging Face space <code>ano666-nubias.hf.space</code> is running and accessible.
+                  Make sure the Hugging Face space <code>madeofstone-nubiasv2.hf.space</code> is running and accessible.
                 </p>
               </div>
             )}
